@@ -114,7 +114,7 @@ public class BookResource {
     	updateResponse.addLink(new LinkDto("delete-book", "/books/" + book.getIsbn(), "DELETE"));
     	updateResponse.addLink(new LinkDto("create-review", "/books/" + book.getIsbn(), "POST"));
     	if (book.getReviews().size() > 0) {
-    		updateResponse.addLink(new LinkDto("view-all-reviews", "/books/" + book.getIsbn() +"/reviews/", "GET"));
+    		updateResponse.addLink(new LinkDto("view-all-reviews", "/books/" + book.getIsbn() +"/reviews", "GET"));
     	}
     	return Response.status(200).entity(updateResponse).build();
     	
