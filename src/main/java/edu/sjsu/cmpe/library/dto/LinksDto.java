@@ -5,6 +5,7 @@ import java.util.List;
 
 public class LinksDto {
     private List<LinkDto> links = new ArrayList<LinkDto>();
+    
 
     public void addLink(LinkDto link) {
 	links.add(link);

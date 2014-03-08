@@ -18,6 +18,8 @@ public interface BookRepositoryInterface {
      * @return a newly created book instance with auto-generated ISBN
      */
     Book saveBook(Book newBook);
+    
+   
 
     /**
      * Retrieve an existing book by ISBN
@@ -27,6 +29,11 @@ public interface BookRepositoryInterface {
      * @return a book instance
      */
     Book getBookByISBN(Long isbn);
+    
+    int deleteBook(Long isbn);
+    
+    int updateBook(Long isbn, String status);
 
-    // TODO: add other operations here!
+    
+    
 }
