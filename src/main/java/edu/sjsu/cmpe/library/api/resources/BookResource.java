@@ -59,7 +59,7 @@ public class BookResource {
 	bookResponse.addLink(new LinkDto("view-book", location, "GET"));
 	bookResponse.addLink(new LinkDto("update-book", location, "PUT"));
 	bookResponse.addLink(new LinkDto("delete-book", location, "DELETE"));
-	bookResponse.addLink(new LinkDto("create-review", location, "POST"));
+	bookResponse.addLink(new LinkDto("create-review", location + "/reviews", "POST"));
 	return Response.status(201).entity(bookResponse).build();
 	
     }
@@ -75,7 +75,7 @@ public class BookResource {
 	bookResponse.addLink(new LinkDto("view-book", location, "GET"));
 	bookResponse.addLink(new LinkDto("update-book", location, "PUT"));
 	bookResponse.addLink(new LinkDto("delete-book", location, "DELETE"));
-	bookResponse.addLink(new LinkDto("create-review", location, "POST"));
+	bookResponse.addLink(new LinkDto("create-review", location + "/reviews", "POST"));
 	if (book.getReviews().size() > 0) {
 		//bookResponse.addLink(new LinkDto("view-all-reviews", "/books/" + book.getIsbn() +"/reviews/", "GET"));
 		bookResponse.addLink(new LinkDto("view-all-reviews", location +"/reviews", "GET"));
@@ -112,7 +112,7 @@ public class BookResource {
     	updateResponse.addLink(new LinkDto("view-book", "/books/" + book.getIsbn(), "GET"));
     	updateResponse.addLink(new LinkDto("update-book", "/books/" + book.getIsbn(), "PUT"));
     	updateResponse.addLink(new LinkDto("delete-book", "/books/" + book.getIsbn(), "DELETE"));
-    	updateResponse.addLink(new LinkDto("create-review", "/books/" + book.getIsbn(), "POST"));
+    	updateResponse.addLink(new LinkDto("create-review", "/books/" + book.getIsbn() + "/reviews", "POST"));
     	if (book.getReviews().size() > 0) {
     		updateResponse.addLink(new LinkDto("view-all-reviews", "/books/" + book.getIsbn() +"/reviews", "GET"));
     	}
@@ -142,7 +142,7 @@ public class BookResource {
     public Response viewReview(@PathParam("isbn") LongParam isbn, @PathParam("id") int rev_id) {
     	Book book = bookRepository.getBookByISBN(isbn.get());
     	ReviewDto reviewResponse = new ReviewDto(book.getReviews().get(rev_id-1));
-    	String location = "/books" + book.getIsbn() + "/reviews/" + rev_id;
+    	String location = "/books/" + book.getIsbn() + "/reviews/" + rev_id;
        	reviewResponse.addLink(new LinkDto("view-review", location, "GET"));
        	return Response.status(200).entity(reviewResponse).build();
        		
