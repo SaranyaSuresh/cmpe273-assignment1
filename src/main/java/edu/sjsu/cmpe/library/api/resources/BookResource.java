@@ -78,7 +78,7 @@ public class BookResource {
 	bookResponse.addLink(new LinkDto("create-review", location, "POST"));
 	if (book.getReviews().size() > 0) {
 		//bookResponse.addLink(new LinkDto("view-all-reviews", "/books/" + book.getIsbn() +"/reviews/", "GET"));
-		bookResponse.addLink(new LinkDto("view-all-reviews", location +"/reviews/", "GET"));
+		bookResponse.addLink(new LinkDto("view-all-reviews", location +"/reviews", "GET"));
 	}
 	return bookResponse;
 	
